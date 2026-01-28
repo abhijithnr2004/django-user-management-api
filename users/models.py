@@ -12,7 +12,7 @@ class Users(models.Model):
 
     age = models.PositiveIntegerField(null=True, blank=True)
 
-    bio = models.TextField(blank=True)
+    bio = models.TextField(null=True, blank=True)
 
     password = models.CharField(max_length=255)
 
