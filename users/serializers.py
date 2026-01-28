@@ -14,9 +14,9 @@ class UsersSerializers(serializers.Serializer):
 
     email = serializers.EmailField()
 
-    age = serializers.IntegerField(required=False)
+    age = serializers.IntegerField()
 
-    bio = serializers.CharField(required=False)
+    bio = serializers.CharField()
 
     password = serializers.CharField()
 
@@ -41,9 +41,12 @@ class UsersSerializers(serializers.Serializer):
         if qs_email.exists():
             raise serializers.ValidationError("Email already exists")
         
-        if 100 < data.get("age") < 0:
+        age = data.get("age")
+        if age is not None and (age < 1 or age > 100):
             raise serializers.ValidationError("Enter age between 1 and 100")
         
+        if len(data.get("password")) < 8:
+            raise serializers.ValidationError("Password contains atleast 8 characters")
         if data.get("password").isalpha() or data.get("password").isdigit():
             raise serializers.ValidationError("Enter strong password with combination of alphanumeric characters") 
 

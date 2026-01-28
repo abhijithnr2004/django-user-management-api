@@ -1,0 +1,20 @@
+# api call for craete users
+###
+POST http://127.0.0.1:8000/users/
+Content-Type: application/json
+
+{
+  "first_name": "Liam",
+  "last_name": "Oconnor",
+  "user_name": "liam_dev_99",
+  "email": "liam.oc@tech-solutions.com",
+  "age": 24,
+  "bio": "cool",
+  "password": "StrongPass!2026"
+}
+
+
+# api call for list users
+###
+GET http://127.0.0.1:8000/users/
+Accept: application/json
